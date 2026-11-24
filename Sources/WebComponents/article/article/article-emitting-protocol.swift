@@ -1,0 +1,29 @@
+import Path
+import HTML
+
+public protocol ArticleEmitting: FacadeEmitting {
+    // inherits from FacadeEmitting for api
+    var content: @Sendable () -> HTMLFragment { get }
+    func lead() -> HTMLFragment
+
+    func lead_and_content() -> HTMLFragment
+
+    func article() -> HTMLFragment
+    func article_data() -> ArticleItem.ReferenceResolved
+
+    // new:
+    func toc_entries() -> [HeadingResolver.Entry]
+    func article_with_toc() -> HTMLFragment
+}
+
+// public protocol ArticleDefining: ArticleEmitting {
+//     var article_item: ArticleItem
+// }
+
+// public enum _Test_MovationArticles: ArticleEmitting {
+//     case article_one
+
+//     var article_item:
+
+//     var title: String { self.}
+// }

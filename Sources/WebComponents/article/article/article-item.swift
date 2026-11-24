@@ -1,0 +1,173 @@
+import Foundation
+import HTML
+import Constructors
+import Path
+
+// -------------------------------------
+// --------   **Classical conditioning**
+// |      |   
+// |      |   Classical conditioning is ..
+// |      |   this that and the other..
+// --------
+// -------------------------------------
+public struct ArticleItem: ArticleEmitting {
+    // public var path: StandardPath
+
+    public var title: String // document title, api title
+    // public var definition: String // document intro, api description
+    public var definition: @Sendable () -> HTMLFragment   // document intro, api description (RICH)
+    public var thumbnail_src: StandardPath? // api thumnail
+
+    public var content: @Sendable () -> HTMLFragment 
+
+    public init(
+        // path: StandardPath,
+        title: String,
+        // definition: String,
+        definition: @escaping @Sendable () -> HTMLFragment,
+        thumbnail_src: StandardPath? = nil,
+        content: @escaping @Sendable () -> HTMLFragment,
+    ) {
+        // self.path = path
+        self.title = title
+        self.definition = definition
+        self.thumbnail_src = thumbnail_src
+        self.content = content
+    }
+}
+
+public extension ArticleItem {
+    /// Standardized header block for every doc item:
+    /// - Renders `title` + `definition` once (no drift).
+    /// - Optional thumbnail rendered "wiki style" (to the right of the definition).
+    ///
+    /// Usage:
+    ///     let nodes = item.headerNodes()
+    ///     let body  = nodes + item.content()
+    func lead() -> HTMLFragment {
+        var nodes: HTMLFragment = []
+
+        nodes.append(
+            HTML.h1(["class": "doc-title"]) {
+                HTML.text(self.title)
+            }
+        )
+
+        // -------------------------------------
+        // --------   **Classical conditioning**
+        // |      |   
+        // |      |   Classical conditioning is ..
+        // |      |   this that and the other..
+        // --------
+        // -------------------------------------
+
+        if let thumb = self.thumbnail_src {
+            nodes.append(
+                HTML.div(["class": "doc-lead doc-lead--with-thumb"]) {
+                    HTML.div(["class": "doc-lead__definition"]) {
+                        HTML.p(["class": "doc-definition"]) {
+                            // HTML.text(self.definition)
+                            self.definition()
+                        }
+                    }
+
+                    HTML.div(["class": "doc-lead__thumb"]) {
+                        HTML.img(
+                            src: thumb.rendered(asRootPath: true),
+                            alt: self.title
+                        )
+                    }
+                }
+            )
+        } else {
+            nodes.append(
+                HTML.div(["class": "doc-lead doc-lead--with-thumb"]) {
+                    HTML.div(["class": "doc-lead__definition"]) {
+                        HTML.p(["class": "doc-definition"]) {
+                            // HTML.text(self.definition)
+                            self.definition()
+                        }
+                    }
+                }
+            )
+        }
+
+        return nodes
+    }
+
+    // possible convenience
+    func lead_and_content() -> HTMLFragment {
+        return lead() + content()
+    }
+}
+
+public extension ArticleItem {
+    // rendering full article with rich references
+    func article() -> HTMLFragment {
+        let input_state = lead_and_content()
+
+        let resolved = CitationResolver.resolve(from: input_state)
+        // let refs = ReferenceCollector.collect(from: base)
+        let refs = resolved.references
+
+        guard !refs.isEmpty else { 
+            return input_state
+        }
+
+        // return base + [
+        return resolved.body + [
+            // this can be further made flexibly rendered:
+            // since we may not always want this exact rendering style
+            // for now, ok
+            HTML.h2 { 
+                HTML.text("Referenties")
+            },
+            HTML.ul(["class": "refs-list"]) {
+                refs
+            }
+        ]
+    }
+
+    func article_data() -> Self.ReferenceResolved {
+        let input_state = lead_and_content()
+        return CitationResolver.resolve(from: input_state)
+    }
+}
+
+// renewed
+extension ArticleItem {
+    public func toc_entries() -> [HeadingResolver.Entry] {
+        HeadingResolver.resolve(from: lead_and_content()).entries
+    }
+
+    // public func article_with_toc() -> HTMLFragment {
+    //     let headings = HeadingResolver.resolve(from: lead_and_content())
+    //     let toc = ArticleInnerTOC(entries: headings.entries).html()
+    //     let resolved = CitationResolver.resolve(from: headings.body)
+
+    //     guard !resolved.references.isEmpty else {
+    //         return lead() + toc + content()
+    //     }
+
+    //     return lead() + toc + content() + [
+    //         HTML.h2 { HTML.text("Referenties") },
+    //         HTML.ul(["class": "refs-list"]) { resolved.references }
+    //     ]
+    // }
+    public func article_with_toc() -> HTMLFragment {
+        let headings = HeadingResolver.resolve(from: lead_and_content())
+        let toc = ArticleInnerTOC(
+            entries: headings.entries
+        ).nodes.body
+        let resolved = CitationResolver.resolve(from: headings.body)
+
+        guard !resolved.references.isEmpty else {
+            return lead() + toc + content()
+        }
+
+        return lead() + toc + content() + [
+            HTML.h2 { HTML.text("Referenties") },
+            HTML.ul(["class": "refs-list"]) { resolved.references }
+        ]
+    }
+}

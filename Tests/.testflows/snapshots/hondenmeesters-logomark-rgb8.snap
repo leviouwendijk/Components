@@ -1,0 +1,29 @@
+asset.identifier: hondenmeesters.h_logomark
+asset.filetype: png
+asset.base64.compact.count: 172104
+asset.data.count: 129078
+png.signature: ok
+
+png.ihdr.width: 2500
+png.ihdr.height: 2500
+png.ihdr.bitDepth: 8
+png.ihdr.colorType: 6
+png.ihdr.compression: 0
+png.ihdr.filter: 0
+png.ihdr.interlace: 0
+
+png.chunks:
+  IHDR 13
+  IDAT 32768
+  IDAT 32768
+  IDAT 32768
+  IDAT 30681
+  IEND 0
+
+rgb8.result: ok
+rgb8.encoding: rgb8
+rgb8.width: 192
+rgb8.height: 192
+rgb8.base64.count: 147456
+rgb8.bytes.expected: 110592
+rgb8.bytes.actual: 110592

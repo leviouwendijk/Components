@@ -1,0 +1,27 @@
+.DS_Store
+.build/
+/Packages
+xcuserdata/
+DerivedData/
+.swiftpm/configuration/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.netrc
+
+buf
+buf.md
+**/.testflows/*
+!**/.testflows/snapshots/
+
+# gm defaults
+.index-build/
+.swiftpm/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+.env
+.env.*
+.env/*
+.claude/
+compiled.pkl
+/compiled.pkl
+**/compiled.pkl
