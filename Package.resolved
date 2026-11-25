@@ -34,7 +34,7 @@
       "location" : "https://github.com/leviouwendijk/Constructors.git",
       "state" : {
         "branch" : "master",
-        "revision" : "153dd4e4625dec2560d6ab00d00f053ad5115ecb"
+        "revision" : "47c093513b94eb8606e8c97633f06e3953e71dde"
       }
     },
     {
@@ -61,7 +61,7 @@
       "location" : "https://github.com/leviouwendijk/DSL.git",
       "state" : {
         "branch" : "master",
-        "revision" : "c25c620bc766e4a3e59e6224b11c9a868a5f88d5"
+        "revision" : "92957f2f62db2627638574ae5eaa055e7b1c4f73"
       }
     },
     {
@@ -70,7 +70,7 @@
       "location" : "https://github.com/leviouwendijk/Errors.git",
       "state" : {
         "branch" : "master",
-        "revision" : "af4592f7389c1d43ef8d20155cd6da973b7e88b6"
+        "revision" : "c301a2b8dab9d671e27720eaa1c3180e97ce4159"
       }
     },
     {
@@ -106,7 +106,7 @@
       "location" : "https://github.com/leviouwendijk/HTML.git",
       "state" : {
         "branch" : "master",
-        "revision" : "78928f6b03aa5a5565c21812b5bc7ef66ed4f710"
+        "revision" : "192b4fef7bd9752c7255151bfec749f8584fc00f"
       }
     },
     {
@@ -142,7 +142,7 @@
       "location" : "https://github.com/leviouwendijk/Lexing.git",
       "state" : {
         "branch" : "master",
-        "revision" : "8af7b5e20aaf123d2908662c238ac5507c68298c"
+        "revision" : "5037b8580634552bb488692067cf3b209e1911e4"
       }
     },
     {
@@ -241,7 +241,7 @@
       "location" : "https://github.com/leviouwendijk/References.git",
       "state" : {
         "branch" : "master",
-        "revision" : "c3b82282463bacb94efee795ecfb7576b4004a23"
+        "revision" : "45f54d3553ebc2dc8f74080c3d7434ce5abb0770"
       }
     },
     {
