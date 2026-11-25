@@ -31,15 +31,15 @@ let package = Package(
             branch: "master"
         ),
         .package(
-            url: "https://github.com/leviouwendijk/HTML.git",
+            url: "https://github.com/swift-dsl/HTML.git",
             branch: "master"
         ),
         .package(
-            url: "https://github.com/leviouwendijk/CSS.git",
+            url: "https://github.com/swift-dsl/CSS.git",
             branch: "master"
         ),
         .package(
-            url: "https://github.com/leviouwendijk/JS.git",
+            url: "https://github.com/swift-dsl/JS.git",
             branch: "master"
         ),
         .package(
