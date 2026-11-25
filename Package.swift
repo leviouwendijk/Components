@@ -23,11 +23,11 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/leviouwendijk/Primitives.git",
+            url: "https://github.com/swift-lco/Primitives.git",
             branch: "master"
         ),
         .package(
-            url: "https://github.com/leviouwendijk/Macros.git",
+            url: "https://github.com/swift-lco/Macros.git",
             branch: "master"
         ),
         .package(
@@ -47,19 +47,19 @@ let package = Package(
             branch: "master"
         ),
         .package(
-            url: "https://github.com/leviouwendijk/Version.git",
+            url: "https://github.com/swift-lco/Version.git",
             branch: "master"
         ),
         .package(
-            url: "https://github.com/leviouwendijk/Difference.git",
+            url: "https://github.com/swift-lco/Difference.git",
             branch: "master"
         ),
         .package(
-            url: "https://github.com/leviouwendijk/References.git",
+            url: "https://github.com/swift-lco/References.git",
             branch: "master"
         ),
         .package(
-            url: "https://github.com/leviouwendijk/Assets.git",
+            url: "https://github.com/swift-lco/Assets.git",
             branch: "master"
         ),
     ],

@@ -33,7 +33,7 @@ let package = Package(
             branch: "master"
         ),
         .package(
-            url: "https://github.com/leviouwendijk/Assets.git",
+            url: "https://github.com/swift-lco/Assets.git",
             branch: "master"
         ),
         .package(
