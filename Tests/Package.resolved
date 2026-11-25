@@ -49,7 +49,7 @@
     {
       "identity" : "constructors",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/leviouwendijk/Constructors.git",
+      "location" : "https://github.com/swift-webc/Constructors.git",
       "state" : {
         "branch" : "master",
         "revision" : "47c093513b94eb8606e8c97633f06e3953e71dde"
@@ -265,7 +265,7 @@
     {
       "identity" : "protocolcomponents",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/leviouwendijk/ProtocolComponents.git",
+      "location" : "https://github.com/swift-webc/ProtocolComponents.git",
       "state" : {
         "branch" : "master",
         "revision" : "e7a14cb15fccdf57e362f569e5683c639f78ab47"
