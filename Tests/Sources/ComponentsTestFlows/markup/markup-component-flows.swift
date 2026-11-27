@@ -1,4 +1,5 @@
 import Constructors
+import DSL
 import HTML
 import MarkupComponents
 import TestFlows
@@ -12,7 +13,40 @@ enum MarkupComponentsFlowSuite:
     static let flows: [TestFlow] = [
         tableFlow,
         listFlow,
+        structuredContentFlow,
     ]
+
+    static let structuredContentFlow = TestFlow(
+        "markup.structured-content",
+        title: "StructuredContent lowers to HTML nodes with resolved links",
+        tags: ["markup", "structured-content"]
+    ) {
+        let page = StructuredContent.PageKey(rawValue: "example.com/guide")
+        let resolved = StructuredContentEnumerations.resolve(
+            .collection([
+                .heading(level: 2, anchor: nil, content: [.text("Start")]),
+                .prose("Read \(link: "the guide", to: .page(page, anchor: nil)).\(note: "A note.")"),
+                .group(role: .note, title: [.text("Note")], content: .paragraph([.text("Careful.")])),
+                .verse([[.text("one")], [.text("  two")]]),
+                .rule,
+            ])
+        )
+        let lowering = StructuredContentHTML(
+            resolver: StructuredContentURLTable(pages: [page: "/guide/"])
+        )
+        let html = lowering.nodes(resolved.content)
+            .map { $0.render(options: .Defaults.minified(), indent: 0) }
+            .joined()
+
+        try Expect.true(html.contains("<h2 id=\"start\">Start</h2>"), "structured-content.heading-anchor")
+        try Expect.true(html.contains("<a href=\"/guide/\">the guide</a>"), "structured-content.link")
+        try Expect.true(html.contains("<sup class=\"note-ref\"><a href=\"#footnote-1\">1</a></sup>"), "structured-content.note-ref")
+        try Expect.true(html.contains("<aside data-role=\"note\">"), "structured-content.role")
+        try Expect.true(html.contains("<li id=\"footnote-1\">"), "structured-content.footnotes")
+        try Expect.true(html.contains("<hr"), "structured-content.rule")
+
+        return []
+    }
 
     static let tableFlow = TestFlow(
         "markup.table",
