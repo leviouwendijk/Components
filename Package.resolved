@@ -34,7 +34,7 @@
       "location" : "https://github.com/swift-webc/Constructors.git",
       "state" : {
         "branch" : "master",
-        "revision" : "6fc0ea4c352d9f0be90ef708f9f1bfaeb0cd75e0"
+        "revision" : "3e728ad1c0eb89e6017656260ca754cafe81be73"
       }
     },
     {
@@ -142,7 +142,7 @@
       "location" : "https://github.com/swift-dsl/JS.git",
       "state" : {
         "branch" : "master",
-        "revision" : "14adab7e293cfbefaff63a67228d749393fc5624"
+        "revision" : "cb95fed42b14bbf959d449c8a85611740fb759b3"
       }
     },
     {
