@@ -1,5 +1,5 @@
 {
-  "originHash" : "fc8bc6ed3295520fb9696b7472976ee8646c4d6ec12f87541d2483a0784c2778",
+  "originHash" : "4eb28cdf12f0caa1be9ffe17481514523e53c8f47a00e6ff36f2fe918fb7f57f",
   "pins" : [
     {
       "identity" : "ansi",
@@ -52,7 +52,7 @@
       "location" : "https://github.com/swift-webc/Constructors.git",
       "state" : {
         "branch" : "master",
-        "revision" : "6fc0ea4c352d9f0be90ef708f9f1bfaeb0cd75e0"
+        "revision" : "5684aa207dbbc47ac1d26f0f3173e8efb2cad37a"
       }
     },
     {
@@ -169,7 +169,7 @@
       "location" : "https://github.com/swift-dsl/JS.git",
       "state" : {
         "branch" : "master",
-        "revision" : "14adab7e293cfbefaff63a67228d749393fc5624"
+        "revision" : "cb95fed42b14bbf959d449c8a85611740fb759b3"
       }
     },
     {
@@ -344,6 +344,15 @@
       }
     },
     {
+      "identity" : "surface",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swift-lco/Surface.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "17bae00f9467f309d6d4c221eef1085a29406c8c"
+      }
+    },
+    {
       "identity" : "swift-syntax",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swiftlang/swift-syntax.git",
@@ -367,7 +376,7 @@
       "location" : "https://github.com/swift-lco/Terminal.git",
       "state" : {
         "branch" : "master",
-        "revision" : "04281d4fac282e9b7ca7498750fd66c2347d695c"
+        "revision" : "c83d36e41b456f21f30aa6fee1c207181a736a96"
       }
     },
     {

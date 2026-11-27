@@ -97,6 +97,10 @@ let package = Package(
                     package: "DSL"
                 ),
                 .product(
+                    name: "SiteMacros",
+                    package: "Components"
+                ),
+                .product(
                     name: "References",
                     package: "References"
                 ),

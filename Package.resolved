@@ -1,5 +1,5 @@
 {
-  "originHash" : "5411262b2c28d3c7c2c57f9a5e8b019b247d2901b0296601a1be531eece05e50",
+  "originHash" : "bc2394e4119ab798335f1940ee19c6c07f6db88b0dc793c5f4e68eb52e91e755",
   "pins" : [
     {
       "identity" : "arguments",
@@ -34,7 +34,7 @@
       "location" : "https://github.com/swift-webc/Constructors.git",
       "state" : {
         "branch" : "master",
-        "revision" : "27c60cee786dbf7c00092f36a3520899e217f800"
+        "revision" : "5684aa207dbbc47ac1d26f0f3173e8efb2cad37a"
       }
     },
     {

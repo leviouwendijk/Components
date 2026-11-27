@@ -1,5 +1,6 @@
 // swift-tools-version: 6.3
 
+import CompilerPluginSupport
 import PackageDescription
 
 let package = Package(
@@ -20,8 +21,18 @@ let package = Package(
                 "WebComponents",
             ]
         ),
+        .library(
+            name: "SiteMacros",
+            targets: [
+                "SiteMacros",
+            ]
+        ),
     ],
     dependencies: [
+        .package(
+            url: "https://github.com/swiftlang/swift-syntax.git",
+            from: "603.0.0"
+        ),
         .package(
             url: "https://github.com/swift-lco/Primitives.git",
             branch: "master"
@@ -68,6 +79,37 @@ let package = Package(
         ),
     ],
     targets: [
+        .target(
+            name: "SiteMacros",
+            dependencies: [
+                .product(
+                    name: "Constructors",
+                    package: "Constructors"
+                ),
+                "SiteMacrosPlugin",
+            ]
+        ),
+        .macro(
+            name: "SiteMacrosPlugin",
+            dependencies: [
+                .product(
+                    name: "SwiftCompilerPlugin",
+                    package: "swift-syntax"
+                ),
+                .product(
+                    name: "SwiftSyntax",
+                    package: "swift-syntax"
+                ),
+                .product(
+                    name: "SwiftSyntaxBuilder",
+                    package: "swift-syntax"
+                ),
+                .product(
+                    name: "SwiftSyntaxMacros",
+                    package: "swift-syntax"
+                ),
+            ]
+        ),
         .target(
             name: "MarkupComponents",
             dependencies: [
