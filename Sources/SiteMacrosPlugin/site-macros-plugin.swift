@@ -61,10 +61,21 @@ public struct SiteMacro: MemberMacro, ExtensionMacro {
 
         let list = pages.map { "Self." + $0.expression }.joined(separator: ", ")
 
-        return [
+        var members: [DeclSyntax] = [
             "\(raw: access)static let host = \(literal: host)",
-            "\(raw: access)static var pages: [SitePage] { [\(raw: list)] }",
+            "\(raw: access)static var declaredPages: [SitePage] { [\(raw: list)] }",
         ]
+
+        // A site that adds pages from data declares `pages` itself
+        // (`declaredPages + articles`); otherwise they are the members.
+        let declaresPages = declaration.memberBlock.members.contains {
+            $0.decl.as(VariableDeclSyntax.self).flatMap(SiteSyntax.name) == "pages"
+        }
+        if !declaresPages {
+            members.append("\(raw: access)static var pages: [SitePage] { declaredPages }")
+        }
+
+        return members
     }
 
     public static func expansion(

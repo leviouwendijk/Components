@@ -16,8 +16,9 @@
 ///
 /// A member's name is its route segment (camelCase becomes kebab-case);
 /// a string argument overrides it. Generates the `Site` conformance, `host`
-/// and `pages`; two pages on one route are a compile error.
-@attached(member, names: named(host), named(pages))
+/// and `declaredPages` (and `pages`, unless the type declares its own to
+/// add pages from data); two pages on one route are a compile error.
+@attached(member, names: named(host), named(declaredPages), named(pages))
 @attached(extension, conformances: Site)
 public macro Site(
     _ host: String
