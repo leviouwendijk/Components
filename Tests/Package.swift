@@ -41,6 +41,14 @@ let package = Package(
             branch: "master"
         ),
         .package(
+            url: "https://github.com/swift-dsl/DSL.git",
+            branch: "master"
+        ),
+        .package(
+            url: "https://github.com/swift-lco/References.git",
+            branch: "master"
+        ),
+        .package(
             path: ".."
         ),
     ],
@@ -79,6 +87,14 @@ let package = Package(
                 .product(
                     name: "TestFlows",
                     package: "TestFlows"
+                ),
+                .product(
+                    name: "DSL",
+                    package: "DSL"
+                ),
+                .product(
+                    name: "References",
+                    package: "References"
                 ),
             ]
         ),

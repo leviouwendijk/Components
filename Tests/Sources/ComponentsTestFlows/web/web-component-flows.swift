@@ -14,6 +14,7 @@ enum WebComponentsFlowSuite: TestFlowRegistry {
         + ShapeFoundationSemanticFlowSuite.flows
         + ShapeParentSemanticFlowSuite.flows
         + LegalDocumentFlowSuite.flows
+        + DocumentEnumerationParityFlowSuite.flows
 }
 
 enum WebComponentsPDFImageFlowSuite: TestFlowRegistry {
