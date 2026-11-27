@@ -59,6 +59,10 @@ let package = Package(
             branch: "master"
         ),
         .package(
+            url: "https://github.com/swift-dsl/DSL.git",
+            branch: "master"
+        ),
+        .package(
             url: "https://github.com/swift-lco/Assets.git",
             branch: "master"
         ),
@@ -127,6 +131,10 @@ let package = Package(
                 .product(
                     name: "Assets",
                     package: "Assets"
+                ),
+                .product(
+                    name: "Provenance",
+                    package: "DSL"
                 ),
             ]
         ),

@@ -1,5 +1,6 @@
 import DSL
 import HTML
+import Provenance
 import References
 import TestFlows
 import WebComponents
@@ -10,6 +11,57 @@ enum DocumentEnumerationParityFlowSuite: TestFlowRegistry {
     static let title = "Document enumeration parity"
 
     static let flows: [TestFlow] = [
+        TestFlow(
+            "docs-provenance-card",
+            title: "The AI notice renders typed provenance",
+            tags: [
+                "provenance",
+                "docs",
+            ]
+        ) {
+            let provenance = try Provenance(
+                .init(
+                    involvement: .drafted,
+                    control: .instructed(by: .init(rawValue: "Levi")),
+                    sources: [.sessions(count: 14, years: 2025...2026), .literature],
+                    redaction: .init(.aggregated, by: .automaticChecked(by: .init(rawValue: "Casper"))),
+                    review: .reviewed(by: .init(rawValue: "Casper"), on: "2026-11-12"),
+                    audience: .public
+                )
+            )
+
+            let card = DocsAIContentNotice(
+                provenance: provenance,
+                language: .dutch,
+                lexicon: .dutch,
+                includeStyles: false
+            ).node().render(options: .init(), indent: 0)
+
+            try Expect.true(
+                card.contains("Opgesteld met AI in opdracht van Levi, op basis van 14 sessietranscripten (2025–2026) en literatuur; geaggregeerd, nagelezen door Casper op 12-11-2026."),
+                "provenance.card.sentence"
+            )
+            try Expect.true(
+                card.contains("<details") && card.contains("<summary") && card.contains("Details"),
+                "provenance.card.details"
+            )
+            try Expect.true(
+                card.contains("Automatisch, gecontroleerd door Casper"),
+                "provenance.card.redaction-method"
+            )
+
+            let generic = DocsAIContentNotice(
+                lexicon: .dutch,
+                includeStyles: false
+            ).node().render(options: .init(), indent: 0)
+
+            try Expect.true(
+                !generic.contains("<details"),
+                "provenance.card.generic-unchanged"
+            )
+
+            return []
+        },
         TestFlow(
             "document-enumeration-citation-resolver-parity",
             title: "Enumeration matches CitationResolver numbering",

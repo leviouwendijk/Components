@@ -1,6 +1,8 @@
 import Constructors
 import CSS
+import DSL
 import HTML
+import Provenance
 
 public struct DocsAIContentNotice:
     ReusableComponent,
@@ -12,12 +14,16 @@ public struct DocsAIContentNotice:
         static let content = "wc-docs-ai-content-notice__content"
         static let title = "wc-docs-ai-content-notice__title"
         static let message = "wc-docs-ai-content-notice__message"
+        static let details = "wc-docs-ai-content-notice__details"
     }
 
     public let title: String
     public let message: String
     public let iconLabel: String
     public let includeStyles: Bool
+    /// Control, redaction method and trace, collapsed under the message.
+    public let details: [(term: String, description: String)]
+    public let detailsLabel: String
 
     public init(
         title: String,
@@ -29,6 +35,30 @@ public struct DocsAIContentNotice:
         self.message = message
         self.iconLabel = iconLabel
         self.includeStyles = includeStyles
+        self.details = []
+        self.detailsLabel = ""
+    }
+
+    /// The card for typed provenance: the message is its sentence, the
+    /// details its control, redaction and trace.
+    public init(
+        provenance: Provenance,
+        language: Provenance.Language,
+        lexicon: DocsLexicon,
+        iconLabel: String = "AI",
+        includeStyles: Bool = true
+    ) {
+        self.title = lexicon.aiContentNoticeTitle
+        self.message = provenance.sentence(language)
+        self.iconLabel = iconLabel
+        self.includeStyles = includeStyles
+        self.details = provenance.details(language).map { definition in
+            (
+                term: definition.term.map(\.plainText).joined(),
+                description: definition.description.plainText
+            )
+        }
+        self.detailsLabel = "Details"
     }
 
     public init(
@@ -93,6 +123,32 @@ public struct DocsAIContentNotice:
                     ]
                 ) {
                     HTML.text(message)
+                }
+
+                if !details.isEmpty {
+                    HTMLElement(
+                        "details",
+                        attrs: [
+                            "class": ClassName.details
+                        ],
+                        children: [
+                            HTMLElement(
+                                "summary",
+                                children: [
+                                    HTMLText(detailsLabel)
+                                ]
+                            ),
+                            HTMLElement(
+                                "dl",
+                                children: details.flatMap { detail -> [any HTMLNode] in
+                                    [
+                                        HTMLElement("dt", children: [HTMLText(detail.term)]),
+                                        HTMLElement("dd", children: [HTMLText(detail.description)]),
+                                    ]
+                                }
+                            ),
+                        ]
+                    )
                 }
             }
         }
@@ -171,6 +227,27 @@ public struct DocsAIContentNotice:
                     CSS.decl("font-size", ".82rem"),
                     CSS.decl("font-weight", "720"),
                     CSS.decl("line-height", "1.25")
+                ),
+
+                CSS.rule(
+                    ".\(ClassName.details)",
+                    CSS.decl("margin-top", "8px"),
+                    CSS.decl("font-size", ".78rem"),
+                    CSS.decl(
+                        "color",
+                        "var(--muted-text-color, color-mix(in srgb, var(--text-color) 68%, transparent))"
+                    )
+                ),
+
+                CSS.rule(
+                    ".\(ClassName.details) dt",
+                    CSS.decl("font-weight", "600"),
+                    CSS.decl("margin-top", "4px")
+                ),
+
+                CSS.rule(
+                    ".\(ClassName.details) dd",
+                    CSS.decl("margin", "0")
                 ),
 
                 CSS.rule(

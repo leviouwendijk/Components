@@ -93,6 +93,10 @@ let package = Package(
                     package: "DSL"
                 ),
                 .product(
+                    name: "Provenance",
+                    package: "DSL"
+                ),
+                .product(
                     name: "References",
                     package: "References"
                 ),
