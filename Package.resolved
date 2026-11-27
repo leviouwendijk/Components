@@ -1,5 +1,5 @@
 {
-  "originHash" : "b2a6d8f97f9138dbdb230b048d0941c8c8ccd4f0255e16b171c2c2a4f5ba8cda",
+  "originHash" : "28218527d0ecc7e9fd33e1a84a4a14cc4a85058aba78de10aec69007c952da22",
   "pins" : [
     {
       "identity" : "arguments",
@@ -7,7 +7,7 @@
       "location" : "https://github.com/swift-lco/Arguments.git",
       "state" : {
         "branch" : "master",
-        "revision" : "2bbd1184eb89d4c34e7d5be64417332b53d9764c"
+        "revision" : "c9f38a0396d54a9c98c7fa4fb6b10cba4197170f"
       }
     },
     {
@@ -16,7 +16,7 @@
       "location" : "https://github.com/swift-lco/Assets.git",
       "state" : {
         "branch" : "master",
-        "revision" : "2f24b9c4775cf9287e8fe73e5b6c2a5f1d25af3e"
+        "revision" : "7348893cc5067b3c2732788622751e99466dfbfe"
       }
     },
     {
@@ -34,7 +34,7 @@
       "location" : "https://github.com/swift-webc/Constructors.git",
       "state" : {
         "branch" : "master",
-        "revision" : "47c093513b94eb8606e8c97633f06e3953e71dde"
+        "revision" : "6fc0ea4c352d9f0be90ef708f9f1bfaeb0cd75e0"
       }
     },
     {
@@ -43,7 +43,7 @@
       "location" : "https://github.com/swift-dsl/CSS.git",
       "state" : {
         "branch" : "master",
-        "revision" : "48401b1d000e00f27dd6a689acc8792a7b5d39b7"
+        "revision" : "75cda8f36782dc30f8aa50d66827bcc2966d86e1"
       }
     },
     {
@@ -52,7 +52,7 @@
       "location" : "https://github.com/swift-lco/Difference.git",
       "state" : {
         "branch" : "master",
-        "revision" : "e926c931531161da98cb9ef16598d931af23e84d"
+        "revision" : "e1bfbba9d1fbb182083b6a1871d7e3883f3ed091"
       }
     },
     {
@@ -61,7 +61,7 @@
       "location" : "https://github.com/swift-dsl/DSL.git",
       "state" : {
         "branch" : "master",
-        "revision" : "92957f2f62db2627638574ae5eaa055e7b1c4f73"
+        "revision" : "c6827fa7b79f9a6aa7a8313abeed5c31bcb35923"
       }
     },
     {
@@ -70,7 +70,7 @@
       "location" : "https://github.com/swift-lco/Errors.git",
       "state" : {
         "branch" : "master",
-        "revision" : "c301a2b8dab9d671e27720eaa1c3180e97ce4159"
+        "revision" : "9ecda105df41ef077cc41cb7043b5d44abcd02f9"
       }
     },
     {
@@ -79,7 +79,7 @@
       "location" : "https://github.com/swift-lco/Excerpt.git",
       "state" : {
         "branch" : "master",
-        "revision" : "2ed6f7962c295f4d3b8410951f480a4af0233ca9"
+        "revision" : "7624c1bb867a3769782e083ef0e3588b107e3962"
       }
     },
     {
@@ -92,12 +92,21 @@
       }
     },
     {
+      "identity" : "frame",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lco-langs/Frame.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "8c3756066075be94da9698d8fceb9d3427600b14"
+      }
+    },
+    {
       "identity" : "grammar",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swift-langs/Grammar.git",
       "state" : {
         "branch" : "master",
-        "revision" : "44d68ca80d2ac5cf197bec66746d720136f19866"
+        "revision" : "3543fba2d80dd915f88f415e54b2a603d57a22c2"
       }
     },
     {
@@ -106,7 +115,7 @@
       "location" : "https://github.com/swift-dsl/HTML.git",
       "state" : {
         "branch" : "master",
-        "revision" : "192b4fef7bd9752c7255151bfec749f8584fc00f"
+        "revision" : "b61e3bfbf68f17370ce556eba8b01b20477c1a85"
       }
     },
     {
@@ -124,7 +133,7 @@
       "location" : "https://github.com/swift-lco/IO.git",
       "state" : {
         "branch" : "master",
-        "revision" : "6e2ee96c8b21bca65a09a07ae7206e3ab4793a0c"
+        "revision" : "41066378fe9f6a2593e02b6230f2f0c73b98f6a4"
       }
     },
     {
@@ -133,7 +142,7 @@
       "location" : "https://github.com/swift-dsl/JS.git",
       "state" : {
         "branch" : "master",
-        "revision" : "dbc784cf9fbe5f04831fd18b0c460269068b2404"
+        "revision" : "14adab7e293cfbefaff63a67228d749393fc5624"
       }
     },
     {
@@ -142,7 +151,7 @@
       "location" : "https://github.com/swift-langs/Lexing.git",
       "state" : {
         "branch" : "master",
-        "revision" : "5037b8580634552bb488692067cf3b209e1911e4"
+        "revision" : "142a5a82cf7590a56046e35dc08b2bba7e57b14b"
       }
     },
     {
@@ -151,7 +160,7 @@
       "location" : "https://github.com/swift-lco/Macros.git",
       "state" : {
         "branch" : "master",
-        "revision" : "1dce56620cebcf31ab5a553673ee19907f00f8c6"
+        "revision" : "726ba8cc715b69e210696ce2b151e7425ab77de9"
       }
     },
     {
@@ -160,7 +169,7 @@
       "location" : "https://github.com/swift-lco/Methods.git",
       "state" : {
         "branch" : "master",
-        "revision" : "1515097c5409bb8eb61d93c54ce0db966a98f66b"
+        "revision" : "fcd9d14a11409fd748c174eadfdeedfde2c9ed5f"
       }
     },
     {
@@ -169,7 +178,7 @@
       "location" : "https://github.com/swift-lco/Milieu.git",
       "state" : {
         "branch" : "master",
-        "revision" : "4ab76378aef515d2dfc72ff52f284cde31cb6a38"
+        "revision" : "577ab1caa1513151b6b1d2dcff5fa857533890cd"
       }
     },
     {
@@ -178,7 +187,7 @@
       "location" : "https://github.com/swift-langs/Parsing.git",
       "state" : {
         "branch" : "master",
-        "revision" : "5f1e6085288011b7898bf3a8f476d1c347804f7d"
+        "revision" : "309f9cddd8379816e0440891b9fdcfcd30d5f2d4"
       }
     },
     {
@@ -187,7 +196,7 @@
       "location" : "https://github.com/swift-lco/Partition.git",
       "state" : {
         "branch" : "master",
-        "revision" : "48b3e0d7129d887256c66e4301280178974cae8e"
+        "revision" : "786ec2e830cf3d0340e9a9fc96d2308ffb169023"
       }
     },
     {
@@ -196,7 +205,7 @@
       "location" : "https://github.com/swift-lco/Path.git",
       "state" : {
         "branch" : "master",
-        "revision" : "3cef050339e68298c869b98daf25401c06531a91"
+        "revision" : "b598acf7b0156c546307d3819b4318ecaf2d3168"
       }
     },
     {
@@ -205,7 +214,7 @@
       "location" : "https://github.com/swift-lco/Position.git",
       "state" : {
         "branch" : "master",
-        "revision" : "d9805b35c346369ef656e645902ad0cbe740c17d"
+        "revision" : "a34eb67fc39944bcc0305b4bdc98d890058159bd"
       }
     },
     {
@@ -214,7 +223,7 @@
       "location" : "https://github.com/swift-lco/Primitives.git",
       "state" : {
         "branch" : "master",
-        "revision" : "1e9c7defa2037e0b74be9e95d8e987442323d372"
+        "revision" : "05431e58c105831a155d4a3759309ff1e1e30a88"
       }
     },
     {
@@ -232,7 +241,7 @@
       "location" : "https://github.com/swift-lco/Readers.git",
       "state" : {
         "branch" : "master",
-        "revision" : "66c24cb5d8f2a3794408fbae231e9a9d266457e7"
+        "revision" : "47030d9a4c38299e040ed8024908e2cf4aa96663"
       }
     },
     {
@@ -241,7 +250,7 @@
       "location" : "https://github.com/swift-lco/References.git",
       "state" : {
         "branch" : "master",
-        "revision" : "45f54d3553ebc2dc8f74080c3d7434ce5abb0770"
+        "revision" : "330ba16ae016c55a366925772057875552b1175a"
       }
     },
     {
@@ -250,7 +259,7 @@
       "location" : "https://github.com/swift-lco/Schema.git",
       "state" : {
         "branch" : "master",
-        "revision" : "e45634af56b8f5ffe8a12a2922675e713dc38190"
+        "revision" : "cc3b5e9411676439a849926be1a9c08e26d41597"
       }
     },
     {
@@ -268,7 +277,7 @@
       "location" : "https://github.com/swift-langs/Syntax.git",
       "state" : {
         "branch" : "master",
-        "revision" : "89b38e4691c17c2328b8eb6dde5618d144266f73"
+        "revision" : "d1be9960bcc6e09d39a6ce9a128683c684c30122"
       }
     },
     {
@@ -277,7 +286,7 @@
       "location" : "https://github.com/swift-lco/Variables.git",
       "state" : {
         "branch" : "master",
-        "revision" : "95453b16be757958a8f295cc93f1f28d2123636b"
+        "revision" : "323082a3be66a694c60dcbaa0f61c69bda0435c5"
       }
     },
     {
@@ -286,7 +295,7 @@
       "location" : "https://github.com/swift-lco/Version.git",
       "state" : {
         "branch" : "master",
-        "revision" : "90bd26cdbe9bb8d2e77855750f5c5640c84244f5"
+        "revision" : "1b7348424610d2a0cfd61ba52bc77726028c8fbf"
       }
     },
     {
@@ -295,7 +304,7 @@
       "location" : "https://github.com/swift-lco/Writers.git",
       "state" : {
         "branch" : "master",
-        "revision" : "aebc0d10d3afa27ee00ac0f909ab76371ba5cd04"
+        "revision" : "0038522270152035b184510b01bc8ae432e63ed1"
       }
     }
   ],

@@ -142,7 +142,7 @@
       "location" : "https://github.com/swift-dsl/HTML.git",
       "state" : {
         "branch" : "master",
-        "revision" : "adcf397d51e4ed0475358ff5ad59965865dca553"
+        "revision" : "b61e3bfbf68f17370ce556eba8b01b20477c1a85"
       }
     },
     {
@@ -304,7 +304,7 @@
       "location" : "https://github.com/swift-lco/References.git",
       "state" : {
         "branch" : "master",
-        "revision" : "1b959052f0130f582dd2909a58fb7a7f67522a0e"
+        "revision" : "330ba16ae016c55a366925772057875552b1175a"
       }
     },
     {
