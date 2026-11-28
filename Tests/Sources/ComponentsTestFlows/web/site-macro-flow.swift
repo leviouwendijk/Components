@@ -6,27 +6,27 @@ enum FixtureSites {}
 
 extension FixtureSites {
     @Site("fixture.example")
-    enum Shop {
+    enum shop {
         @Index(title: "Shop")
-        static var home: SitePage
+        static var home: Site.Page
 
         @Section(title: "Offer", summary: "What we offer")
-        enum Offer {
+        enum offer {
             @Page(title: "Consult")
-            static var consult: SitePage
+            static var consult: Site.Page
 
             @Page("private-lesson", title: "Private lesson")
-            static var privateLesson: SitePage
+            static var privateLesson: Site.Page
 
             @Section(title: "Courses")
-            enum GroupCourses {
+            enum group_courses {
                 @Page(title: "Puppy course")
-                static var puppyCourse: SitePage
+                static var puppyCourse: Site.Page
             }
         }
 
         @Page(title: "Contact")
-        static var contact: SitePage
+        static var contact: Site.Page
     }
 }
 
@@ -42,7 +42,7 @@ enum SiteMacroFlowSuite: TestFlowRegistry {
                 "macros",
             ]
         ) {
-            typealias Shop = FixtureSites.Shop
+            typealias Shop = FixtureSites.shop
 
             try Expect.equal(Shop.host, "fixture.example", "site-macros.host")
             try Expect.equal(
@@ -58,15 +58,15 @@ enum SiteMacroFlowSuite: TestFlowRegistry {
                 ],
                 "site-macros.routes"
             )
-            try Expect.equal(Shop.Offer.index.summary, "What we offer", "site-macros.section-index")
-            try Expect.equal(Shop.Offer.GroupCourses.puppyCourse.title, "Puppy course", "site-macros.nested-page")
+            try Expect.equal(Shop.offer.index.summary, "What we offer", "site-macros.section-index")
+            try Expect.equal(Shop.offer.group_courses.puppyCourse.title, "Puppy course", "site-macros.nested-page")
             try Expect.equal(
                 try Shop.pageTree().children.map(\.identifier.rawValue),
                 ["offer", "contact"],
                 "site-macros.tree"
             )
 
-            let link = StructuredContent.prose("Book a \(link: "consult", to: Shop.Offer.consult).")
+            let link = StructuredContent.prose("Book a \(link: "consult", to: Shop.offer.consult).")
             guard case .paragraph(let inlines) = link,
                   case .link(.page(let key, _), _) = inlines[1]
             else {

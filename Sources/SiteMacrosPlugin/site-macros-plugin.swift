@@ -25,7 +25,7 @@ enum SiteMacroError: Error, CustomStringConvertible {
         case .hostRequired:
             "@Site needs the site's host as a string literal: @Site(\"example.com\")."
         case .memberNeedsType(let name):
-            "Page member '\(name)' must be declared 'static var \(name): SitePage'."
+            "Page member '\(name)' must be declared 'static var \(name): Site.Page'."
         case .indexOutsideRoot(let name):
             "@Index '\(name)' is the site's root page; declare it directly in the @Site type, not in a section."
         case .duplicateRoute(let route, let members):
@@ -63,7 +63,7 @@ public struct SiteMacro: MemberMacro, ExtensionMacro {
 
         var members: [DeclSyntax] = [
             "\(raw: access)static let host = \(literal: host)",
-            "\(raw: access)static var declaredPages: [SitePage] { [\(raw: list)] }",
+            "\(raw: access)static var declaredPages: [Site.Page] { [\(raw: list)] }",
         ]
 
         // A site that adds pages from data declares `pages` itself
@@ -72,7 +72,7 @@ public struct SiteMacro: MemberMacro, ExtensionMacro {
             $0.decl.as(VariableDeclSyntax.self).flatMap(SiteSyntax.name) == "pages"
         }
         if !declaresPages {
-            members.append("\(raw: access)static var pages: [SitePage] { declaredPages }")
+            members.append("\(raw: access)static var pages: [Site.Page] { declaredPages }")
         }
 
         return members
@@ -85,7 +85,7 @@ public struct SiteMacro: MemberMacro, ExtensionMacro {
         conformingTo protocols: [TypeSyntax],
         in context: some MacroExpansionContext
     ) throws -> [ExtensionDeclSyntax] {
-        [try ExtensionDeclSyntax("extension \(type.trimmed): Site {}")]
+        [try ExtensionDeclSyntax("extension \(type.trimmed): Site.Declaring {}")]
     }
 }
 
@@ -124,7 +124,7 @@ public struct PageMacro: AccessorMacro {
         return [
             """
             get {
-                SitePage(host: \(literal: host), path: \(raw: SiteSyntax.array(path)), title: \(raw: marker.title), summary: \(raw: marker.summary))
+                Site.Page(host: \(literal: host), path: \(raw: SiteSyntax.array(path)), title: \(raw: marker.title), summary: \(raw: marker.summary))
             }
             """,
         ]
@@ -151,8 +151,8 @@ public struct SectionMacro: MemberMacro {
 
         return [
             """
-            \(raw: access)static var index: SitePage {
-                SitePage(host: \(literal: host), path: \(raw: SiteSyntax.array(path)), title: \(raw: marker.title), summary: \(raw: marker.summary))
+            \(raw: access)static var index: Site.Page {
+                Site.Page(host: \(literal: host), path: \(raw: SiteSyntax.array(path)), title: \(raw: marker.title), summary: \(raw: marker.summary))
             }
             """,
         ]
@@ -323,12 +323,15 @@ enum SiteSyntax {
         path.isEmpty ? "/" : "/" + path.joined(separator: "/") + "/"
     }
 
-    /// `priveLes` → `prive-les`, `Aanbod` → `aanbod`.
+    /// `priveLes` → `prive-les`, `group_courses` → `group-courses`,
+    /// `Aanbod` / `aanbod` → `aanbod`.
     static func kebab(_ name: String) -> String {
         var result = ""
         for (index, character) in name.enumerated() {
-            if character.isUppercase {
-                if index > 0 { result.append("-") }
+            if character == "_" {
+                result.append("-")
+            } else if character.isUppercase {
+                if index > 0, result.last != "-" { result.append("-") }
                 result.append(Character(character.lowercased()))
             } else {
                 result.append(character)

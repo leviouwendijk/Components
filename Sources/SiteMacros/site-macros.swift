@@ -4,22 +4,24 @@
 /// the type, nested as the types nest.
 ///
 ///     @Site("hondenmeesters.nl")
-///     public enum Hondenmeesters {
-///         @Index(title: "Hondenmeesters") static var home: SitePage
+///     public enum hondenmeesters {
+///         @Index(title: "Hondenmeesters") static var home: Site.Page
 ///
 ///         @Section(title: "Aanbod")                 // /aanbod/ (its `index`)
-///         public enum Aanbod {
-///             @Page(title: "Consult") static var consult: SitePage   // /aanbod/consult/
-///             @Page("prive-les", title: "Privéles") static var priveLes: SitePage
+///         public enum aanbod {
+///             @Page(title: "Consult") static var consult: Site.Page   // /aanbod/consult/
+///             @Page("prive-les", title: "Privéles") static var priveLes: Site.Page
 ///         }
 ///     }
 ///
-/// A member's name is its route segment (camelCase becomes kebab-case);
-/// a string argument overrides it. Generates the `Site` conformance, `host`
+/// Sites and sections are nested enums named like the domain
+/// (`Sites.docs_hondenmeesters`). A member's name is its route segment
+/// (camelCase and snake_case become kebab-case);
+/// a string argument overrides it. Generates the `Site.Declaring` conformance, `host`
 /// and `declaredPages` (and `pages`, unless the type declares its own to
 /// add pages from data); two pages on one route are a compile error.
 @attached(member, names: named(host), named(declaredPages), named(pages))
-@attached(extension, conformances: Site)
+@attached(extension, conformances: Site.Declaring)
 public macro Site(
     _ host: String
 ) = #externalMacro(
